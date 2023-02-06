@@ -5,8 +5,9 @@ const UserTableQuery = `CREATE TABLE IF NOT EXISTS users (
     Name VARCHAR (50) NOT NULL,
     Surname VARCHAR (50) NOT NULL,
     Password VARCHAR (200) NOT NULL,
-    Email VARCHAR (50) NOT NULL,
-    Phone VARCHAR (50)
+    Email VARCHAR (50) NOT NULL UNIQUE,
+    Phone VARCHAR (50),
+    Join_opportunities INTERGER REFERENCES opportunities(opportunity_id)
 )`;
 
 const userTable = async () => {
@@ -15,7 +16,6 @@ const userTable = async () => {
     console.log("USER CREATED");
   } catch (e) {
     console.log("ERROR HAPPENS WHILE CREATING USER TABLE TO DB");
-    console.log(e);
   }
 };
 
